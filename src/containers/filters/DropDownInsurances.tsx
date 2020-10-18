@@ -19,7 +19,7 @@ import {
 
 import { classes } from './Styles';
 
-const DropDownInsurancesHook = ({
+const DropDownInsurancesFC = ({
   className,
 
   payment,
@@ -102,4 +102,4 @@ export const DropDownInsurances = connect(stateToProps, {
   apply: applyInsurances,
   select: selectInsurances,
   reset: resetForm,
-})(DropDownInsurancesHook);
+})(DropDownInsurancesFC);

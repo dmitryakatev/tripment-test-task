@@ -1,7 +1,7 @@
 import { applyFilter } from '../content';
 
 export const selectAvailability = (key: string, checked: boolean) => (
-  async (dispatch, getState) => {
+  (dispatch, getState) => {
     const state = getState();
     const { selected } = state.filters.filterByAvailabilities;
     const newSelected = { ...selected };

@@ -10,7 +10,7 @@ import { DropDownSort } from './DropDownSort';
 
 import { classes } from './Styles';
 
-const FiltersHook = ({ className, reset }) => {
+const FiltersFC = ({ className, reset }) => {
   return (
     <div className={className}>
       <DropDownAvailabilities className={classes.dropDownFilter} />
@@ -26,4 +26,4 @@ const stateToProps = () => ({});
 
 export const Filters = connect(stateToProps, {
   reset: resetAllFilters,
-})(FiltersHook);
+})(FiltersFC);

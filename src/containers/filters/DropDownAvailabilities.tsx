@@ -10,7 +10,7 @@ import { selectAvailability } from '@actions/filters/availabilities';
 
 import { classes } from './Styles';
 
-const DropDownAvailabilitiesHook = ({
+const DropDownAvailabilitiesFC = ({
   className,
 
   select,
@@ -21,7 +21,7 @@ const DropDownAvailabilitiesHook = ({
   return (
     <DropDown
       className={className}
-      placeholder='Speciality'
+      placeholder='Availability'
       selectedCount={0}
       valueText={''}
       minWidthContext={375}
@@ -61,4 +61,4 @@ const stateToProps = (state, props) => {
 
 export const DropDownAvailabilities = connect(stateToProps, {
   select: selectAvailability,
-})(DropDownAvailabilitiesHook);
+})(DropDownAvailabilitiesFC);

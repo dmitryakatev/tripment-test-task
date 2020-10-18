@@ -17,7 +17,7 @@ import {
 
 import { classes } from './Styles';
 
-const DropDownSpecialitiesHook = ({
+const DropDownSpecialitiesFC = ({
   className,
 
   search,
@@ -90,4 +90,4 @@ export const DropDownSpecialities = connect(stateToProps, {
   apply: applySpecialities,
   select: selectSpecialities,
   reset: resetForm,
-})(DropDownSpecialitiesHook);
+})(DropDownSpecialitiesFC);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Sorter } from '@components';
 import { selectSort } from '@actions/filters/sorting';
 
-const DropDownSortHook = ({
+const DropDownSortFC = ({
   className,
 
   sort,
@@ -36,4 +36,4 @@ const stateToProps = (state, props) => {
 
 export const DropDownSort = connect(stateToProps, {
   sort: selectSort,
-})(DropDownSortHook);
+})(DropDownSortFC);

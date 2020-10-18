@@ -18,9 +18,11 @@ export const getContent = () => (
 );
 
 export const resetAllFilters = () => (
-  async (dispatch, getState) => {
+  (dispatch, getState) => {
     dispatch(applyFilter(getState(), {
+      availabilities: [],
       specialities: [],
+      insurances: [],
     }));
   }
 );

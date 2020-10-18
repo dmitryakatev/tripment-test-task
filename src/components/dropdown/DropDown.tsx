@@ -7,7 +7,7 @@ interface IDropDownProps {
   width?: number;
   height?: number;
   placeholder?: string;
-  valueText?: string;
+  valueText?: JSX.Element | string;
   selectedCount?: number;
   minWidthContext?: number;
   maxHeightContext?: number;

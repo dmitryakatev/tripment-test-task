@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb-base"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "import",
+    "jsx-a11y"
+  ],
+  "rules": {
+    "no-console": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "no-case-declarations": "off",
+    "no-plusplus": "off",
+    "import/prefer-default-export": "off",
+    "linebreak-style": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ]
+  }
+}

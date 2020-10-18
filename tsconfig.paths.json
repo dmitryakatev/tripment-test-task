@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@api": [
+        "./api"
+      ],
+      "@components": [
+        "./components"
+      ],
+      "@actions/*": [
+        "./actions/*"
+      ],
+      "@jss-helper": [
+        "./utils/jss-helper"
+      ],
+      "@themes/*": [
+        "./themes/*"
+      ],
+      "@icons": [
+        "./icons"
+      ],
+      "@util": [
+        "./utils/util"
+      ]
+    }
+  }
+}

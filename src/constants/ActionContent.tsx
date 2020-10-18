@@ -1,0 +1,2 @@
+export const RECEIVE_CONTENT = 'RECEIVE_CONTENT';
+export const FILTER_CONTENT = 'FILTER_CONTENT';

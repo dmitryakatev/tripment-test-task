@@ -21,6 +21,7 @@ export const { classes } = styleWidget('slider', {
     borderRadius: '50px',
   },
   button: {
+    transition: 'transform .3s ease-in-out',
     position: 'absolute',
     width: '26px',
     height: '26px',
@@ -41,8 +42,9 @@ export const { classes } = styleWidget('slider', {
     background: 'green',
 
     '& $button': {
-      left: 'auto',
-      right: 0,
+      transform: 'translateX(calc(100% - 3px))',
+      // left: 'auto',
+      // right: 0,
     },
 
     '& svg': {

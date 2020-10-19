@@ -30,10 +30,8 @@ const sorters: ISort[] = [{
 type AccessorFn = (doctor: IDoctor) => any;
 export const sortAccessor = new Map<number, AccessorFn>([
   [1, (doctor: IDoctor) => doctor.telehealth],
-  [2, (doctor: IDoctor) => doctor.reviewsCount, // ???
-  ],
-  [3, (doctor: IDoctor) => doctor.id, // ???
-  ],
+  [2, (doctor: IDoctor) => doctor.reviewsCount], // ???
+  [3, (doctor: IDoctor) => doctor.id], // ???
   [4, (doctor: IDoctor) => doctor.experience],
 ]);
 

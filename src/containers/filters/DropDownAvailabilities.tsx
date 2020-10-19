@@ -17,8 +17,7 @@ const DropDownAvailabilitiesFC = ({
 
   availabilities,
   selected,
-}) => {
-  return (
+}) => (
     <DropDown
       className={className}
       placeholder='Availability'
@@ -29,8 +28,8 @@ const DropDownAvailabilitiesFC = ({
       <DropDownMain>
         <div className={classes.title}>Availability</div>
         {availabilities.map((option, index) => {
-          if (option  === null) {
-            return <DropDownSplitter key={`splitter${index}`} />
+          if (option === null) {
+            return <DropDownSplitter key={`splitter${index}`} />;
           }
 
           return (
@@ -45,8 +44,7 @@ const DropDownAvailabilitiesFC = ({
         })}
       </DropDownMain>
     </DropDown>
-  );
-};
+);
 
 const stateToProps = (state, props) => {
   const { availabilities, selected } = state.filters.filterByAvailabilities;

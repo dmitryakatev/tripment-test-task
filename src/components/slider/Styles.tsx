@@ -33,7 +33,7 @@ export const { classes } = styleWidget('slider', {
     justifyContent: 'center',
     display: 'flex',
     left: 0,
-  
+
     '& svg': {
       fill: '#91A5A7',
     },

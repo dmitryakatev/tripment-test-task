@@ -55,7 +55,7 @@ export const { classes } = styleWidget('drowDown', {
       margin: '0 8px',
       borderRadius: '100%',
       backgroundColor: '#244D51',
-    }
+    },
   },
   trigger: {
     margin: '0 18px 0 11px',

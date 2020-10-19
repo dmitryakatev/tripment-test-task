@@ -30,8 +30,7 @@ const DropDownSpecialitiesFC = ({
   searchText,
   valueText,
   applied,
-}) => {
-  return (
+}) => (
     <DropDown
       className={className}
       placeholder='Speciality'
@@ -40,7 +39,7 @@ const DropDownSpecialitiesFC = ({
       minWidthContext={375}
       maxHeightContext={300}
       onShow={() => reset()}
-      onReset={() =>apply([])}>
+      onReset={() => apply([])}>
       <DropDownHead>
         <SearchField
             value={searchText}
@@ -62,8 +61,7 @@ const DropDownSpecialitiesFC = ({
       </DropDownMain>
       <DropDownFooter onApply={() => apply(selected)} onReset={() => apply([])} />
     </DropDown>
-  );
-};
+);
 
 const stateToProps = (state, props) => {
   const {

@@ -15,7 +15,6 @@ export const selectAvailability = (key: string, checked: boolean) => (
 
     newSelected[key] = checked;
 
-    dispatch(applyFilter(state, { availabilities : newSelected }));
+    dispatch(applyFilter(state, { availabilities: newSelected }));
   }
 );
-

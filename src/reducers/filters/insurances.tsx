@@ -39,6 +39,26 @@ const initialStateInsurances: IStateInsurances = {
   otherPayment: false,
 };
 
+const getNameById = (id: number) => {
+  const insurance = insurancesIdMap.get(id);
+
+  if (insurance) {
+    return insurance.name;
+  }
+
+  return null;
+};
+
+export const getIdByName = (name: string) => {
+  const insurance = insurancesNameMap.get(name);
+
+  if (insurance) {
+    return insurance.id;
+  }
+
+  return null;
+};
+
 export const filterByInsurances = (state = initialStateInsurances, action) => {
   switch (action.type) {
     case RECEIVE_CONTENT:
@@ -70,13 +90,17 @@ export const filterByInsurances = (state = initialStateInsurances, action) => {
         insurances: [...insurancesAll],
       };
     case SELECT_INSURANCES:
+      let selected;
+
+      if (action.checked) {
+        selected = [...state.selected, action.id];
+      } else {
+        selected = state.selected.filter((id) => id !== action.id);
+      }
+
       return {
         ...state,
-        selected: action.checked ? (
-          [...state.selected, action.id]
-        ) : (
-          state.selected.filter((id) => id !== action.id)
-        ),
+        selected,
       };
     case FILTER_CONTENT:
       const { insurances } = action;
@@ -113,24 +137,4 @@ export const filterByInsurances = (state = initialStateInsurances, action) => {
     default:
       return state;
   }
-};
-
-const getNameById = (id: number) => {
-  const insurance = insurancesIdMap.get(id);
-
-  if (insurance) {
-    return insurance.name;
-  }
-
-  return null;
-};
-
-export const getIdByName = (name: string) => {
-  const insurance = insurancesNameMap.get(name);
-
-  if (insurance) {
-    return insurance.id;
-  }
-
-  return null;
 };

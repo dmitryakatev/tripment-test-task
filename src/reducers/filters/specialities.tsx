@@ -36,6 +36,26 @@ const initialStateSpecialities: IStateSpecialities = {
   valueText: '',
 };
 
+const getNameById = (id: number) => {
+  const speciality = specialitiesIdMap.get(id);
+
+  if (speciality) {
+    return speciality.name;
+  }
+
+  return null;
+};
+
+export const getIdByName = (name: string) => {
+  const speciality = specialitiesNameMap.get(name);
+
+  if (speciality) {
+    return speciality.id;
+  }
+
+  return null;
+};
+
 export const filterBySpecialities = (state = initialStateSpecialities, action) => {
   switch (action.type) {
     case RECEIVE_CONTENT:
@@ -67,13 +87,17 @@ export const filterBySpecialities = (state = initialStateSpecialities, action) =
         specialities: [...specialitiesAll],
       };
     case SELECT_SPECIALITIES:
+      let selected;
+
+      if (action.checked) {
+        selected = [...state.selected, action.id];
+      } else {
+        selected = state.selected.filter((id) => id !== action.id);
+      }
+
       return {
         ...state,
-        selected: action.checked ? (
-          [...state.selected, action.id]
-        ) : (
-          state.selected.filter((id) => id !== action.id)
-        ),
+        selected,
       };
     case FILTER_CONTENT:
       const { specialities } = action;
@@ -105,24 +129,4 @@ export const filterBySpecialities = (state = initialStateSpecialities, action) =
     default:
       return state;
   }
-};
-
-const getNameById = (id: number) => {
-  const speciality = specialitiesIdMap.get(id);
-
-  if (speciality) {
-    return speciality.name;
-  }
-
-  return null;
-};
-
-export const getIdByName = (name: string) => {
-  const speciality = specialitiesNameMap.get(name);
-
-  if (speciality) {
-    return speciality.id;
-  }
-
-  return null;
 };

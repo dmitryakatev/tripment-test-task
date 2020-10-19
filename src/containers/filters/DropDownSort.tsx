@@ -10,15 +10,13 @@ const DropDownSortFC = ({
 
   sorters,
   selected,
-}) => {
-  return (
+}) => (
     <Sorter
       className={className}
       options={sorters}
       selected={selected}
       onChange={sort} />
-  );
-};
+);
 
 const stateToProps = (state, props) => {
   const {

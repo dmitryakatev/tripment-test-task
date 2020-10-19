@@ -22,7 +22,7 @@ const handlers: Handler[] = [];
 window.addEventListener('click', () => {
   handlers.forEach((handler) => {
     handler();
-  })
+  });
 });
 
 const useExpanded = (): [boolean, (value: boolean) => void] => {
@@ -71,7 +71,7 @@ export const DropDown: React.FC<IDropDownProps> = ({
 }) => {
   const [expanded, setExpanded] = useExpanded();
   let clicked = false;
-  let count = selectedCount || 0;
+  const count = selectedCount || 0;
 
   const onDropDownClick = () => {
     if (!clicked) {

@@ -27,19 +27,14 @@ const sorters: ISort[] = [{
   name: 'Most Experienced',
 }];
 
-export const sortAccessor = new Map<number, (doctor: IDoctor) => any>([
-  [1, (doctor: IDoctor) => {
-    return doctor.telehealth;
-  }],
-  [2, (doctor: IDoctor) => {
-    return doctor.reviewsCount; // ???
-  }],
-  [3, (doctor: IDoctor) => {
-    return doctor.id; // ???
-  }],
-  [4, (doctor: IDoctor) => {
-    return doctor.experience;
-  }],
+type AccessorFn = (doctor: IDoctor) => any;
+export const sortAccessor = new Map<number, AccessorFn>([
+  [1, (doctor: IDoctor) => doctor.telehealth],
+  [2, (doctor: IDoctor) => doctor.reviewsCount, // ???
+  ],
+  [3, (doctor: IDoctor) => doctor.id, // ???
+  ],
+  [4, (doctor: IDoctor) => doctor.experience],
 ]);
 
 const initialStateSorters: IStateSorters = {
@@ -65,6 +60,4 @@ export const useSorters = (state = initialStateSorters, action) => {
 };
 
 const defaultAccessor = () => 0;
-export const getAccessorById = (id: number) => {
-  return sortAccessor.get(id) || defaultAccessor;
-};
+export const getAccessorById = (id: number) => sortAccessor.get(id) || defaultAccessor;

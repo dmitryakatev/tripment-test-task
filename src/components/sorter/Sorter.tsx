@@ -58,7 +58,7 @@ export const Sorter: React.FC<ISorterProps> = ({
             className={classes.item}
             onClick={() => onChangeHandler(option.id)}>
             <span className={classes.icon}>
-                { currSelected.indexOf(option.id) !==-1 ? <CheckIcon /> : null }
+                { currSelected.indexOf(option.id) !== -1 ? <CheckIcon /> : null }
             </span>
             <span className={classes.text}>{option.name}</span>
           </div>

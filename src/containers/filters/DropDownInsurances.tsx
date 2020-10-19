@@ -34,8 +34,7 @@ const DropDownInsurancesFC = ({
   searchText,
   valueText,
   applied,
-}) => {
-  return (
+}) => (
     <DropDown
       className={className}
       placeholder='Insurance'
@@ -44,7 +43,7 @@ const DropDownInsurancesFC = ({
       minWidthContext={375}
       maxHeightContext={300}
       onShow={() => reset()}
-      onReset={() =>apply([])}>
+      onReset={() => apply([])}>
       <DropDownHead>
         <Slider
           checked={otherPayment}
@@ -52,11 +51,11 @@ const DropDownInsurancesFC = ({
           Provides other than insurance payment options
         </Slider>
         <SearchField
-            value={searchText}
-            onChange={search}
-            placeholder='Filter by insurance carrier'
-            height={48}
-            />
+          value={searchText}
+          onChange={search}
+          placeholder='Filter by insurance carrier'
+          height={48}
+        />
       </DropDownHead>
       <DropDownMain>
         {insurances.map((option) => (
@@ -71,8 +70,7 @@ const DropDownInsurancesFC = ({
       </DropDownMain>
       <DropDownFooter onApply={() => apply(selected)} onReset={() => apply([])} />
     </DropDown>
-  );
-};
+);
 
 const stateToProps = (state, props) => {
   const {

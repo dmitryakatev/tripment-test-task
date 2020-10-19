@@ -22,7 +22,7 @@ interface IStateAvailabilities {
     schedulesOnline: boolean;
     treatsChildren: boolean;
   };
-};
+}
 
 const availabilities: Array<IAvailability | null> = [{
   id: 1,
@@ -61,7 +61,8 @@ const availabilities: Array<IAvailability | null> = [{
   count: 0,
 }];
 
-export const filterCreator = new Map<string, () => (doctor: IDoctor) => boolean>([
+type FilterCreatorFn = () => (doctor: IDoctor) => boolean;
+export const filterCreator = new Map<string, FilterCreatorFn>([
   ['today', () => {
     const date = new Date();
     date.setHours(0);
@@ -69,47 +70,31 @@ export const filterCreator = new Map<string, () => (doctor: IDoctor) => boolean>
     date.setSeconds(0);
     date.setMilliseconds(0);
 
-    return (doctor: IDoctor) => {
-      return doctor.offlineAvailable >= date;
-    };
+    return (doctor: IDoctor) => doctor.offlineAvailable >= date;
   }],
   ['next3Days', () => {
     const date = new Date();
     date.setDate(date.getDate() - 3);
 
-    return (doctor: IDoctor) => {
-      return doctor.offlineAvailable >= date;
-    };
+    return (doctor: IDoctor) => doctor.offlineAvailable >= date;
   }],
   ['next2Weeks', () => {
     const date = new Date();
     date.setDate(date.getDate() - 14);
 
-    return (doctor: IDoctor) => {
-      return doctor.offlineAvailable >= date;
-    };
+    return (doctor: IDoctor) => doctor.offlineAvailable >= date;
   }],
-  ['telehealth', () => {
-    return (doctor: IDoctor) => {
-      return doctor.telehealth;
-    };
-  }],
-  ['newPatients', () => {
-    return (doctor: IDoctor) => {
-      return doctor.acceptNew;
-    };
-  }],
-  ['schedulesOnline', () => {
-    return (doctor: IDoctor) => {
-      return true; // ???
-    };
-  }],
-  ['treatsChildren', () => {
-    return (doctor: IDoctor) => {
-      return true; // ???
-    };
-  }],
+  ['telehealth', () => (doctor: IDoctor) => doctor.telehealth],
+  ['newPatients', () => (doctor: IDoctor) => doctor.acceptNew],
+  ['schedulesOnline', () => () => true], // ???
+  ['treatsChildren', () => () => true], // ???
 ]);
+
+const defaultFilter = () => true;
+export const getFilterByKey = (key: string) => {
+  const creator = filterCreator.get(key);
+  return creator ? creator() : defaultFilter;
+};
 
 const initialStateAvailabilities: IStateAvailabilities = {
   availabilities,
@@ -143,11 +128,11 @@ export const filterByAvailabilities = (state = initialStateAvailabilities, actio
         availabilities: newAvailabilities,
       };
     case FILTER_CONTENT:
-      const { availabilities } = action;
-      if (availabilities !== null) {
+      const { availabilities: selected } = action;
+      if (selected !== null) {
         return {
           ...state,
-          selected: availabilities,
+          selected,
         };
       }
 
@@ -155,10 +140,4 @@ export const filterByAvailabilities = (state = initialStateAvailabilities, actio
     default:
       return state;
   }
-};
-
-const defaultFilter = () => true;
-export const getFilterByKey = (key: string) => {
-  const creator = filterCreator.get(key);
-  return creator ? creator() : defaultFilter;
 };

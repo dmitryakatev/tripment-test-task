@@ -28,7 +28,7 @@ export const { classes } = styleWidget('sorter', {
 
     '& svg': {
       fill: '#244D51',
-    }
+    },
   },
   text: {
     flex: 1,

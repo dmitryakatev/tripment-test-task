@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  resetAllFilters
+  resetAllFilters,
 } from '@actions/content';
 import { DropDownAvailabilities } from './DropDownAvailabilities';
 import { DropDownSpecialities } from './DropDownSpecialities';
@@ -10,8 +10,7 @@ import { DropDownSort } from './DropDownSort';
 
 import { classes } from './Styles';
 
-const FiltersFC = ({ className, reset }) => {
-  return (
+const FiltersFC = ({ className, reset }) => (
     <div className={className}>
       <DropDownAvailabilities className={classes.dropDownFilter} />
       <DropDownSpecialities className={classes.dropDownFilter} />
@@ -19,8 +18,7 @@ const FiltersFC = ({ className, reset }) => {
       <DropDownSort className={classes.dropDownFilter} />
       <div className={classes.clearFilter} onClick={() => reset()}>Clear filters</div>
     </div>
-  );
-};
+);
 
 const stateToProps = () => ({});
 

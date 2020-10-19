@@ -10,24 +10,6 @@ import { getIdByName as getSpecialityId } from '../reducers/filters/specialities
 import { getIdByName as getInsurancesId } from '../reducers/filters/insurances';
 import { getAccessorById } from '../reducers/filters/sorters';
 
-export const getContent = () => (
-  async (dispatch) => {
-    const [errorText, doctors] = await api.content.getDoctors();
-    dispatch({ type: RECEIVE_CONTENT, doctors, errorText });
-  }
-);
-
-export const resetAllFilters = () => (
-  (dispatch, getState) => {
-    dispatch(applyFilter(getState(), {
-      availabilities: [],
-      specialities: [],
-      insurances: [],
-    }));
-  }
-);
-
-
 type Filter = (doctor: IDoctor) => boolean;
 
 export const applyFilter = (state, applied) => {
@@ -95,5 +77,22 @@ export const applyFilter = (state, applied) => {
     insurances: applied.insurances || null,
     sort,
     doctors,
-  }
+  };
 };
+
+export const getContent = () => (
+  async (dispatch) => {
+    const [errorText, doctors] = await api.content.getDoctors();
+    dispatch({ type: RECEIVE_CONTENT, doctors, errorText });
+  }
+);
+
+export const resetAllFilters = () => (
+  (dispatch, getState) => {
+    dispatch(applyFilter(getState(), {
+      availabilities: [],
+      specialities: [],
+      insurances: [],
+    }));
+  }
+);
